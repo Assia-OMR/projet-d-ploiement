@@ -1,18 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-// Exemple de données temporaires
 let users = [
-  { id: 1, name: "Alice" },
-  { id: 2, name: "Bob" }
+  { id: 1, name: "Assia" },
+  { id: 2, name: "Salma" }
 ];
 
-// GET all users
 router.get("/", (req, res) => {
   res.json(users);
 });
 
-// POST create user
 router.post("/", (req, res) => {
   const newUser = {
     id: users.length + 1,
@@ -22,7 +19,6 @@ router.post("/", (req, res) => {
   res.status(201).json(newUser);
 });
 
-// PUT update user
 router.put("/:id", (req, res) => {
   const { id } = req.params;
   const index = users.findIndex(user => user.id == id);
@@ -31,7 +27,6 @@ router.put("/:id", (req, res) => {
   res.json(users[index]);
 });
 
-// DELETE user
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
   users = users.filter(user => user.id != id);

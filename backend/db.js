@@ -1,19 +1,18 @@
 const mysql = require("mysql2");
-require("dotenv").config();
 
 const connection = mysql.createConnection({
-    host: "mysql_db", // Nom du service Docker
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
+  host: "localhost",
+  user: "user",
+  password: "userpassword",
+  database: "users_db",
 });
 
 connection.connect((err) => {
-    if (err) {
-        console.error("Erreur de connexion à la base de données : ", err);
-        return;
-    }
+  if (err) {
+    console.error("Erreur de connexion à la base de données :", err);
+  } else {
     console.log("Connecté à la base de données MySQL !");
+  }
 });
 
 module.exports = connection;
